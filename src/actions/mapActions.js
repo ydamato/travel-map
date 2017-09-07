@@ -11,6 +11,10 @@ export const removeMarker = id => ({
   id
 });
 
+export const hideAllInfoWindows = () => ({
+  type: 'HIDE_ALL_INFO_WINDOWS'
+});
+
 export const showMarkerDescription = id =>
   (dispatch) => {
     // Hide the contextual menu
@@ -49,4 +53,3 @@ export const showContextualMenu = menuState =>
       menuState
     });
   };
-

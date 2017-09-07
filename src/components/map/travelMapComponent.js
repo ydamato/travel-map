@@ -18,7 +18,7 @@ const TravelMap = withGoogleMap((props) => {
       ref={props.onMapLoad}
       defaultZoom={5}
       defaultCenter={defaultCenter}
-      onClick={props.onMapClick}
+      onClick={props.hideAllInfoWindows}
       onRightClick={props.showContextualMenu}
     >
 
@@ -56,7 +56,21 @@ TravelMap.propTypes = {
       }).isRequired
     }).isRequired
   ).isRequired,
-  contextualMenu: PropTypes.shape({ /* TODO */ })
+  contextualMenu: PropTypes.shape({
+    position: PropTypes.shape({
+      lat: PropTypes.number.isRequired,
+      lng: PropTypes.number.isRequired
+    }).isRequired
+  }).isRequired,
+  showContextualMenu: PropTypes.func.isRequired,
+  hideContextualMenu: PropTypes.func.isRequired,
+  addMarker: PropTypes.func.isRequired,
+  showMarkerDescription: PropTypes.func.isRequired,
+  removeMarker: PropTypes.func.isRequired,
+  hideMarkerDescription: PropTypes.func.isRequired,
+  containerElement: PropTypes.element.isRequired,
+  mapElement: PropTypes.element.isRequired,
+  onMapLoad: PropTypes.func.isRequired,
 };
 
 export default TravelMap;

@@ -24,7 +24,8 @@ const mapDispatchToProps = dispatch => (
     addMarker: position => dispatch(actions.addMarker(position)),
     showMarkerDescription: id => dispatch(actions.showMarkerDescription(id)),
     removeMarker: id => dispatch(actions.removeMarker(id)),
-    hideMarkerDescription: () => dispatch(actions.hideMarkerDescription())
+    hideMarkerDescription: () => dispatch(actions.hideMarkerDescription()),
+    hideAllInfoWindows: () => dispatch(actions.hideAllInfoWindows())
   }
 );
 

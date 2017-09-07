@@ -21,7 +21,6 @@ const ContextualMenu = (
     ) : null;
 };
 
-// TODO
 ContextualMenu.propTypes = {
   contextualMenu: PropTypes.shape({
     position: PropTypes.shape({
@@ -31,8 +30,6 @@ ContextualMenu.propTypes = {
   }).isRequired,
   hideContextualMenu: PropTypes.func.isRequired,
   addMarker: PropTypes.func.isRequired
-
-
 };
 
 export default ContextualMenu;

@@ -21,6 +21,7 @@ const contextualMenu = (state = defaultContextualMenu, action) => {
       break;
 
     case 'HIDE_CONTEXTUAL_MENU':
+    case 'HIDE_ALL_INFO_WINDOWS':
       updatedState = {
         ...updatedState,
         isActive: false

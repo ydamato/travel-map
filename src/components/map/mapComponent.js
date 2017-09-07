@@ -7,12 +7,10 @@ const MapComponent = props => (
     containerElement={<div className="map-container" style={{ height: '500px' }} />}
     mapElement={<div style={{ height: '100%' }} />}
     onMapLoad={function noop() {}}
-    onMapClick={function noop() {}}
     {...props}
   />
 );
 
-// TODO
 MapComponent.propTypes = {
   markers: PropTypes.arrayOf(
     PropTypes.shape({
@@ -23,7 +21,18 @@ MapComponent.propTypes = {
       }).isRequired
     }).isRequired
   ).isRequired,
-  showContextualMenu: PropTypes.func.isRequired
+  contextualMenu: PropTypes.shape({
+    position: PropTypes.shape({
+      lat: PropTypes.number.isRequired,
+      lng: PropTypes.number.isRequired
+    }).isRequired
+  }).isRequired,
+  showContextualMenu: PropTypes.func.isRequired,
+  hideContextualMenu: PropTypes.func.isRequired,
+  addMarker: PropTypes.func.isRequired,
+  showMarkerDescription: PropTypes.func.isRequired,
+  removeMarker: PropTypes.func.isRequired,
+  hideMarkerDescription: PropTypes.func.isRequired
 };
 
 

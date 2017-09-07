@@ -41,6 +41,7 @@ const markers = (state = defaultMarkerMap, action) => {
       break;
 
     case 'HIDE_MARKER_DESCRIPTION':
+    case 'HIDE_ALL_INFO_WINDOWS':
       updatedState.forEach((marker) => {
         marker.isActive = false;
       });
