@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Marker } from 'react-google-maps';
-
 import MarkerDescription from './markerDescriptionComponent';
 
 const MarkerComponent = (
   {
     marker,
     showMarkerDescription,
+    removeMarker,
     hideMarkerDescription
   }
 ) => {
   const onClick = () => {
-    showMarkerDescription(marker.key);
+    showMarkerDescription(marker.id);
   };
 
   return (
@@ -20,9 +20,9 @@ const MarkerComponent = (
       {
         marker.isActive &&
         <MarkerDescription
-          title={marker.title}
-          description={marker.description}
-          onCloseClickHandler={hideMarkerDescription}
+          marker={marker}
+          hideMarkerDescription={hideMarkerDescription}
+          removeMarker={removeMarker}
         />
       }
     </Marker>
@@ -32,6 +32,7 @@ const MarkerComponent = (
 MarkerComponent.propTypes = {
   marker: PropTypes.shape().isRequired,
   showMarkerDescription: PropTypes.func.isRequired,
+  removeMarker: PropTypes.func.isRequired,
   hideMarkerDescription: PropTypes.func.isRequired
 };
 

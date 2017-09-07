@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 const defaultMarkerMap = [
   {
-    key: 'nce',
+    id: '1',
     title: 'Nice',
     description: 'Description for Nice',
     position: {
@@ -11,7 +11,7 @@ const defaultMarkerMap = [
     }
   },
   {
-    key: 'ldn',
+    id: '2',
     title: 'London',
     description: 'Description for London',
     position: {
@@ -23,7 +23,7 @@ const defaultMarkerMap = [
 
 const createMarker = position => (
   {
-    key: Date.now().toString(),
+    id: Date.now().toString(),
     title: 'new',
     description: 'description',
     position
@@ -31,12 +31,12 @@ const createMarker = position => (
 );
 
 const markers = (state = defaultMarkerMap, action) => {
-  const updatedState = _.merge([], state);
+  let updatedState = _.merge([], state);
 
   switch (action.type) {
     case 'SHOW_MARKER_DESCRIPTION':
       updatedState.forEach((marker) => {
-        marker.isActive = marker.key === action.key;
+        marker.isActive = marker.id === action.id;
       });
       break;
 
@@ -48,6 +48,10 @@ const markers = (state = defaultMarkerMap, action) => {
 
     case 'ADD_MARKER':
       updatedState.push(createMarker(action.position));
+      break;
+
+    case 'REMOVE_MARKER':
+      updatedState = updatedState.filter(marker => marker.id !== action.id);
       break;
 
     default:

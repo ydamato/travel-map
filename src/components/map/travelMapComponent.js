@@ -1,44 +1,45 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { withGoogleMap, GoogleMap } from 'react-google-maps';
-import MarkerContainer from '../../containers/markerContainer';
+import Marker from './markerComponent';
+import ContextualMenu from './contextualMenuComponent';
 
-import ContextualMenu from '../../containers/contextualMenuContainer';
-
-const TravelMap = withGoogleMap(({
-  markers,
-  onMapLoad,
-  onMapClick,
-  onRightClickHandler,
-  contextualMenu
-
-}) => {
-  const defaultCenter = !markers.length ?
+const TravelMap = withGoogleMap((props) => {
+  const defaultCenter = !props.markers.length ?
     {
       lat: -25.363882,
       lng: 131.044922
     } :
-    markers[0].position;
+    props.markers[0].position;
 
   return (
     <GoogleMap
-      ref={onMapLoad}
+      ref={props.onMapLoad}
       defaultZoom={5}
       defaultCenter={defaultCenter}
-      onClick={onMapClick}
-      onRightClick={onRightClickHandler}
+      onClick={props.onMapClick}
+      onRightClick={props.showContextualMenu}
     >
 
-      {
-        contextualMenu.isActive &&
-        <ContextualMenu position={contextualMenu.position} />
-      }
+      <ContextualMenu
+        contextualMenu={props.contextualMenu}
+        hideContextualMenu={props.hideContextualMenu}
+        addMarker={props.addMarker}
+
+      />
 
       {
-        markers.map(
-          marker => <MarkerContainer marker={marker} key={marker.key} />
+        props.markers.map(
+          marker => (
+            <Marker
+              key={marker.id}
+              marker={marker}
+              showMarkerDescription={props.showMarkerDescription}
+              removeMarker={props.removeMarker}
+              hideMarkerDescription={props.hideMarkerDescription}
+            />
+          )
         )
       }
     </GoogleMap>
@@ -48,7 +49,7 @@ const TravelMap = withGoogleMap(({
 TravelMap.propTypes = {
   markers: PropTypes.arrayOf(
     PropTypes.shape({
-      key: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
       position: PropTypes.shape({
         lat: PropTypes.number.isRequired,
         lng: PropTypes.number.isRequired

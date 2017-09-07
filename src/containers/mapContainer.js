@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
-import { showContextualMenu } from '../actions/contextualMenuActions';
-
+import * as actions from '../actions/mapActions';
 import MapComponent from '../components/map/mapComponent';
 
 const onMapRightClickHandler = event =>
-  showContextualMenu({
+  actions.showContextualMenu({
     position: {
       lat: event.latLng.lat(),
       lng: event.latLng.lng()
@@ -20,7 +19,12 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => (
   {
-    showContextualMenu: event => dispatch(onMapRightClickHandler(event))
+    showContextualMenu: event => dispatch(onMapRightClickHandler(event)),
+    hideContextualMenu: () => dispatch(actions.hideContextualMenu()),
+    addMarker: position => dispatch(actions.addMarker(position)),
+    showMarkerDescription: id => dispatch(actions.showMarkerDescription(id)),
+    removeMarker: id => dispatch(actions.removeMarker(id)),
+    hideMarkerDescription: () => dispatch(actions.hideMarkerDescription())
   }
 );
 
