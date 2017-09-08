@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import { fetchGeocode, getLabelFromGeocode } from '../utils/map';
 
 export const hideContextualMenu = () => ({
@@ -12,6 +13,11 @@ export const hideMarkerDescription = () => ({
 export const removeMarker = id => ({
   type: 'REMOVE_MARKER',
   id
+});
+
+export const updateSearchBoxValue = value => ({
+  type: 'UPDATE_SEARCHBOX_VALUE',
+  value
 });
 
 export const hideAllInfoWindows = () => ({
@@ -67,4 +73,17 @@ export const showContextualMenu = data =>
       .catch(() => {
         _dispatchShowContextualMenu(dispatch, data, 'undefined');
       });
+  };
+
+export const showSearchedLocation = value =>
+  (dispatch) => {
+    geocodeByAddress(value)
+      .then(results => getLatLng(results[0]))
+      .then((latLng) => {
+        const data = {
+          position: latLng
+        };
+        _dispatchShowContextualMenu(dispatch, data, value);
+      })
+      .catch(error => console.error('Error', error));
   };

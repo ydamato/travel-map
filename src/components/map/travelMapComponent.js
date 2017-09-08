@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withGoogleMap, GoogleMap } from 'react-google-maps';
 import Marker from './markerComponent';
 import ContextualMenu from './contextualMenuComponent';
+import Searchbox from './searchBoxComponent';
 
 const TravelMap = withGoogleMap((props) => {
   const defaultCenter = !props.markers.length ?
@@ -21,6 +22,14 @@ const TravelMap = withGoogleMap((props) => {
       onClick={props.hideAllInfoWindows}
       onRightClick={props.showContextualMenu}
     >
+      <Searchbox
+        style={{ position: 'absolute', left: '50%', top: 0 }}
+        searchBox={props.searchBox}
+        showSearchedLocation={props.showSearchedLocation}
+        updateSearchBoxValue={props.updateSearchBoxValue}
+      >
+        test
+      </Searchbox>
 
       <ContextualMenu
         contextualMenu={props.contextualMenu}
