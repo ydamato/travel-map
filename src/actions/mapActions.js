@@ -1,3 +1,6 @@
+import _ from 'lodash';
+import { fetchGeocode, getLabelFromGeocode } from '../utils/map';
+
 export const hideContextualMenu = () => ({
   type: 'HIDE_CONTEXTUAL_MENU'
 });
@@ -27,7 +30,7 @@ export const showMarkerDescription = id =>
     });
   };
 
-export const addMarker = position =>
+export const addMarker = (position, label) =>
   (dispatch) => {
     // Hide all markers descriptions
     dispatch(hideMarkerDescription());
@@ -38,18 +41,30 @@ export const addMarker = position =>
     // Add marker
     dispatch({
       type: 'ADD_MARKER',
-      position
+      position,
+      label
     });
   };
 
-export const showContextualMenu = menuState =>
+const _dispatchShowContextualMenu = (dispatch, data, label) => {
+  const contextualMenu = _.merge({}, data, { label });
+  // show contextual menu
+  dispatch({
+    type: 'SHOW_CONTEXTUAL_MENU',
+    contextualMenu
+  });
+};
+
+export const showContextualMenu = data =>
   (dispatch) => {
     // Hide all markers descriptions
     dispatch(hideMarkerDescription());
 
-    // show contextual menu
-    dispatch({
-      type: 'SHOW_CONTEXTUAL_MENU',
-      menuState
-    });
+    fetchGeocode(data.position.lat, data.position.lng)
+      .then((result) => {
+        _dispatchShowContextualMenu(dispatch, data, getLabelFromGeocode(result));
+      })
+      .catch(() => {
+        _dispatchShowContextualMenu(dispatch, data, 'undefined');
+      });
   };

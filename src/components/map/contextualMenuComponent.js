@@ -10,13 +10,16 @@ const ContextualMenu = (
   }
 ) => {
   const onClickHandler = () => {
-    addMarker(contextualMenu.position);
+    addMarker(contextualMenu.position, contextualMenu.label);
   };
 
   return contextualMenu.isActive ?
     (
       <InfoWindow position={contextualMenu.position} onCloseClick={hideContextualMenu}>
-        <button onClick={onClickHandler}>Add marker</button>
+        <div>
+          <div>{contextualMenu.label}</div>
+          <button onClick={onClickHandler}>Add marker</button>
+        </div>
       </InfoWindow>
     ) : null;
 };
@@ -26,7 +29,8 @@ ContextualMenu.propTypes = {
     position: PropTypes.shape({
       lat: PropTypes.number.isRequired,
       lng: PropTypes.number.isRequired
-    }).isRequired
+    }).isRequired,
+    label: PropTypes.string,
   }).isRequired,
   hideContextualMenu: PropTypes.func.isRequired,
   addMarker: PropTypes.func.isRequired

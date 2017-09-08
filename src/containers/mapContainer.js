@@ -21,7 +21,7 @@ const mapDispatchToProps = dispatch => (
   {
     showContextualMenu: event => dispatch(onMapRightClickHandler(event)),
     hideContextualMenu: () => dispatch(actions.hideContextualMenu()),
-    addMarker: position => dispatch(actions.addMarker(position)),
+    addMarker: (position, label) => dispatch(actions.addMarker(position, label)),
     showMarkerDescription: id => dispatch(actions.showMarkerDescription(id)),
     removeMarker: id => dispatch(actions.removeMarker(id)),
     hideMarkerDescription: () => dispatch(actions.hideMarkerDescription()),

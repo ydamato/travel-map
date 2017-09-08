@@ -21,11 +21,11 @@ const defaultMarkerMap = [
   }
 ];
 
-const createMarker = position => (
+const createMarker = (position, label) => (
   {
     id: Date.now().toString(),
-    title: 'new',
-    description: 'description',
+    title: label,
+    description: '',
     position
   }
 );
@@ -48,7 +48,7 @@ const markers = (state = defaultMarkerMap, action) => {
       break;
 
     case 'ADD_MARKER':
-      updatedState.push(createMarker(action.position));
+      updatedState.push(createMarker(action.position, action.label));
       break;
 
     case 'REMOVE_MARKER':
