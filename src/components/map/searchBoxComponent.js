@@ -9,7 +9,6 @@ const searchBoxComponent = (
     updateSearchBoxValue
   }
 ) => {
-
   const handleSelection = () => {
     showSearchedLocationRequest(searchBox.value);
   };
@@ -27,7 +26,7 @@ const searchBoxComponent = (
         googleLogo={false}
       />
     </form>
-  )
+  );
 };
 
 searchBoxComponent.propTypes = {
