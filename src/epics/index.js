@@ -4,13 +4,15 @@ import addMarker from './addMarkerEpic';
 import showContextualMenuRequest from './showContextualMenuRequestEpic';
 import showContextualMenu from './showContextualMenuEpic';
 import showSearchedLocationRequest from './showSearchedLocationRequestEpic';
+import updateMarkerPositionRequest from './updateMarkerPositionRequestEpic';
 
 const rootEpic = combineEpics(
   showMarkerDescription,
   showContextualMenuRequest,
   showContextualMenu,
   showSearchedLocationRequest,
-  addMarker
+  addMarker,
+  updateMarkerPositionRequest
 );
 
 export default rootEpic;

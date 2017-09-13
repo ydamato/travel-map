@@ -51,3 +51,19 @@ export const showSearchedLocationRequest = value =>
     type: 'SHOW_SEARCHED_LOCATION_REQUEST',
     value
   });
+
+
+export const updateMarkerPositionRequest = (id, lat, lng) =>
+  ({
+    type: 'UPDATE_MARKER_POSITION_REQUEST',
+    id,
+    lat,
+    lng
+  });
+
+export const updateMarkerTitle = (id, title) =>
+  ({
+    type: 'UPDATE_MARKER_TITLE',
+    id,
+    title
+  });

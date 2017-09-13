@@ -47,6 +47,7 @@ const TravelMap = withGoogleMap((props) => {
               showMarkerDescription={props.showMarkerDescription}
               removeMarker={props.removeMarker}
               hideMarkerDescription={props.hideMarkerDescription}
+              updateMarkerPositionRequest={props.updateMarkerPositionRequest}
             />
           )
         )

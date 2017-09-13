@@ -5,6 +5,7 @@
     "no-param-reassign":"off",
     "react/jsx-filename-extension":"off",
     "no-underscore-dangle": "off",
-    "valid-jsdoc": "error"
+    "valid-jsdoc": "error",
+    "react/jsx-boolean-value": "off"
   }
 }

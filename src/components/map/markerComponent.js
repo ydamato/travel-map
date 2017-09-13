@@ -8,15 +8,26 @@ const MarkerComponent = (
     marker,
     showMarkerDescription,
     removeMarker,
-    hideMarkerDescription
+    hideMarkerDescription,
+    updateMarkerPositionRequest
   }
 ) => {
-  const onClick = () => {
+  const onClickHandler = () => {
     showMarkerDescription(marker.id);
   };
 
+  const updatePosition = (event) => {
+    updateMarkerPositionRequest(marker.id, event.latLng.lat(), event.latLng.lng());
+  };
+
   return (
-    <Marker {...marker} onClick={onClick}>
+    <Marker
+      {...marker}
+      draggable={true}
+      onDragEnd={updatePosition}
+      onDragStart={hideMarkerDescription}
+      onClick={onClickHandler}
+    >
       {
         marker.isActive &&
         <MarkerDescription
@@ -33,7 +44,8 @@ MarkerComponent.propTypes = {
   marker: PropTypes.shape().isRequired,
   showMarkerDescription: PropTypes.func.isRequired,
   removeMarker: PropTypes.func.isRequired,
-  hideMarkerDescription: PropTypes.func.isRequired
+  hideMarkerDescription: PropTypes.func.isRequired,
+  updateMarkerPositionRequest: PropTypes.func.isRequired
 };
 
 export default MarkerComponent;

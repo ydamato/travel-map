@@ -55,6 +55,31 @@ const markers = (state = defaultMarkerMap, action) => {
       updatedState = updatedState.filter(marker => marker.id !== action.id);
       break;
 
+    case 'UPDATE_MARKER_POSITION_REQUEST':
+      updatedState.forEach((marker, index) => {
+        if (marker.id === action.id) {
+          updatedState[index] = {
+            ...marker,
+            position: {
+              lat: action.lat,
+              lng: action.lng
+            }
+          };
+        }
+      });
+      break;
+
+    case 'UPDATE_MARKER_TITLE':
+      updatedState.forEach((marker, index) => {
+        if (marker.id === action.id) {
+          updatedState[index] = {
+            ...marker,
+            title: action.title
+          };
+        }
+      });
+      break;
+
     default:
       break;
   }

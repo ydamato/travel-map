@@ -23,7 +23,8 @@ const mapDispatchToProps = dispatch => (
     hideMarkerDescription: () => dispatch(actions.hideMarkerDescription()),
     hideAllInfoWindows: () => dispatch(actions.hideAllInfoWindows()),
     showSearchedLocationRequest: value => dispatch(actions.showSearchedLocationRequest(value)),
-    updateSearchBoxValue: value => dispatch(actions.updateSearchBoxValue(value))
+    updateSearchBoxValue: value => dispatch(actions.updateSearchBoxValue(value)),
+    updateMarkerPositionRequest: (id, lat, lng) => dispatch(actions.updateMarkerPositionRequest(id, lat, lng))
   }
 );
 
