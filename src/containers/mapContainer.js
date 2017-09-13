@@ -3,7 +3,7 @@ import * as actions from '../actions/mapActions';
 import MapComponent from '../components/map/mapComponent';
 
 const onMapRightClickHandler = event =>
-  actions.showContextualMenu(event.latLng.lat(), event.latLng.lng());
+  actions.showContextualMenuRequest(event.latLng.lat(), event.latLng.lng());
 
 const mapStateToProps = state => (
   {
@@ -15,14 +15,14 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => (
   {
-    showContextualMenu: event => dispatch(onMapRightClickHandler(event)),
+    showContextualMenuRequest: event => dispatch(onMapRightClickHandler(event)),
     hideContextualMenu: () => dispatch(actions.hideContextualMenu()),
     addMarker: (position, label) => dispatch(actions.addMarker(position, label)),
     showMarkerDescription: id => dispatch(actions.showMarkerDescription(id)),
     removeMarker: id => dispatch(actions.removeMarker(id)),
     hideMarkerDescription: () => dispatch(actions.hideMarkerDescription()),
     hideAllInfoWindows: () => dispatch(actions.hideAllInfoWindows()),
-    showSearchedLocation: value => dispatch(actions.showSearchedLocation(value)),
+    showSearchedLocationRequest: value => dispatch(actions.showSearchedLocationRequest(value)),
     updateSearchBoxValue: value => dispatch(actions.updateSearchBoxValue(value))
   }
 );

@@ -20,12 +20,12 @@ const TravelMap = withGoogleMap((props) => {
       defaultZoom={5}
       defaultCenter={defaultCenter}
       onClick={props.hideAllInfoWindows}
-      onRightClick={props.showContextualMenu}
+      onRightClick={props.showContextualMenuRequest}
     >
       <Searchbox
         style={{ position: 'absolute', left: '50%', top: 0 }}
         searchBox={props.searchBox}
-        showSearchedLocation={props.showSearchedLocation}
+        showSearchedLocationRequest={props.showSearchedLocationRequest}
         updateSearchBoxValue={props.updateSearchBoxValue}
       >
         test
@@ -71,7 +71,7 @@ TravelMap.propTypes = {
       lng: PropTypes.number.isRequired
     }).isRequired
   }).isRequired,
-  showContextualMenu: PropTypes.func.isRequired,
+  showContextualMenuRequest: PropTypes.func.isRequired,
   hideContextualMenu: PropTypes.func.isRequired,
   addMarker: PropTypes.func.isRequired,
   showMarkerDescription: PropTypes.func.isRequired,

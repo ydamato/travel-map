@@ -27,7 +27,7 @@ MapComponent.propTypes = {
       lng: PropTypes.number.isRequired
     }).isRequired
   }).isRequired,
-  showContextualMenu: PropTypes.func.isRequired,
+  showContextualMenuRequest: PropTypes.func.isRequired,
   hideContextualMenu: PropTypes.func.isRequired,
   addMarker: PropTypes.func.isRequired,
   showMarkerDescription: PropTypes.func.isRequired,

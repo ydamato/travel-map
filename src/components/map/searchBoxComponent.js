@@ -4,14 +4,14 @@ import PlacesAutocomplete from 'react-places-autocomplete';
 
 const searchBoxComponent = (
   {
-    showSearchedLocation,
+    showSearchedLocationRequest,
     searchBox,
     updateSearchBoxValue
   }
 ) => {
 
   const handleSelection = () => {
-    showSearchedLocation(searchBox.value);
+    showSearchedLocationRequest(searchBox.value);
   };
 
   const inputProps = {
@@ -32,7 +32,7 @@ const searchBoxComponent = (
 
 searchBoxComponent.propTypes = {
   searchBox: PropTypes.shape().isRequired,
-  showSearchedLocation: PropTypes.func.isRequired,
+  showSearchedLocationRequest: PropTypes.func.isRequired,
   updateSearchBoxValue: PropTypes.func.isRequired
 };
 

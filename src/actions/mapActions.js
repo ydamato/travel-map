@@ -31,31 +31,23 @@ export const addMarker = (position, label) => ({
   label
 });
 
-// const _dispatchShowContextualMenu = (dispatch, data, label) => {
-//   const contextualMenu = _.merge({}, data, { label });
-//   // show contextual menu
-//   dispatch({
-//     type: 'SHOW_CONTEXTUAL_MENU',
-//     contextualMenu
-//   });
-// };
-
-export const showContextualMenu = (lat, lng) =>
+export const showContextualMenuRequest = (lat, lng) =>
   ({
     type: 'SHOW_CONTEXTUAL_MENU_REQUEST',
     lat,
     lng
   });
 
-export const showSearchedLocation = value =>( {} ); //TODO
-  // (dispatch) => {
-  //   geocodeByAddress(value)
-  //     .then(results => getLatLng(results[0]))
-  //     .then((latLng) => {
-  //       const data = {
-  //         position: latLng
-  //       };
-  //       _dispatchShowContextualMenu(dispatch, data, value);
-  //     })
-  //     .catch(error => console.error('Error', error));
-  // };
+export const showContextualMenu = (lat, lng, label) =>
+  ({
+    type: 'SHOW_CONTEXTUAL_MENU',
+    label,
+    lat,
+    lng
+  });
+
+export const showSearchedLocationRequest = value =>
+  ({
+    type: 'SHOW_SEARCHED_LOCATION_REQUEST',
+    value
+  });

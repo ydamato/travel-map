@@ -17,10 +17,6 @@ const contextualMenu = (state = defaultContextualMenu, action) => {
     case 'SHOW_CONTEXTUAL_MENU_REQUEST':
       updatedState = {
         ...updatedState,
-        position: {
-          lat,
-          lng
-        },
         isActive: false
       };
       break;
@@ -28,6 +24,10 @@ const contextualMenu = (state = defaultContextualMenu, action) => {
     case 'SHOW_CONTEXTUAL_MENU':
       updatedState = {
         ...updatedState,
+        position: {
+          lat,
+          lng
+        },
         label,
         isActive: !!label
       };
