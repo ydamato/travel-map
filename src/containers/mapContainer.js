@@ -3,12 +3,7 @@ import * as actions from '../actions/mapActions';
 import MapComponent from '../components/map/mapComponent';
 
 const onMapRightClickHandler = event =>
-  actions.showContextualMenu({
-    position: {
-      lat: event.latLng.lat(),
-      lng: event.latLng.lng()
-    }
-  });
+  actions.showContextualMenu(event.latLng.lat(), event.latLng.lng());
 
 const mapStateToProps = state => (
   {

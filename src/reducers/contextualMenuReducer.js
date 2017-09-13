@@ -11,13 +11,25 @@ const defaultContextualMenu = {
 
 const contextualMenu = (state = defaultContextualMenu, action) => {
   let updatedState = _.merge({}, state);
+  const { label, lat, lng } = action;
 
   switch (action.type) {
+    case 'SHOW_CONTEXTUAL_MENU_REQUEST':
+      updatedState = {
+        ...updatedState,
+        position: {
+          lat,
+          lng
+        },
+        isActive: false
+      };
+      break;
+
     case 'SHOW_CONTEXTUAL_MENU':
       updatedState = {
         ...updatedState,
-        ...action.contextualMenu,
-        isActive: true
+        label,
+        isActive: !!label
       };
       break;
 

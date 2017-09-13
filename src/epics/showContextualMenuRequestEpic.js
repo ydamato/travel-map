@@ -1,19 +1,11 @@
-import fetch from 'isomorphic-fetch';
+import 'rxjs';
 import _ from 'lodash';
-
-export const fetchGeocode = (lat, lng) =>
-  fetch(`http://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}`)
-    .then((response) => {
-      if (response.status !== 200) {
-        throw new Error();
-      }
-      return response.json();
-    });
+import { ajax } from 'rxjs/observable/dom/ajax';
 
 export const getLabelFromGeocode = (data) => {
   let addressComponents = null;
   if (!_.has(data, 'results[0].address_components')) {
-    throw new Error();
+    return null;
   }
   addressComponents = data.results[0].address_components;
   let city = null;
@@ -41,3 +33,14 @@ export const getLabelFromGeocode = (data) => {
   }
   return `${city}, ${country}`;
 };
+
+export default action$ =>
+  action$
+    .ofType('SHOW_CONTEXTUAL_MENU_REQUEST')
+    .mergeMap(action =>
+      ajax({ url: `http://maps.googleapis.com/maps/api/geocode/json?latlng=${action.lat},${action.lng}`, crossDomain: true })
+        .map(data => ({
+          type: 'SHOW_CONTEXTUAL_MENU',
+          label: getLabelFromGeocode(data.response)
+        }))
+    );

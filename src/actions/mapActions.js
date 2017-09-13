@@ -1,7 +1,3 @@
-import _ from 'lodash';
-import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import { fetchGeocode, getLabelFromGeocode } from '../utils/map';
-
 export const hideContextualMenu = () => ({
   type: 'HIDE_CONTEXTUAL_MENU'
 });
@@ -24,66 +20,42 @@ export const hideAllInfoWindows = () => ({
   type: 'HIDE_ALL_INFO_WINDOWS'
 });
 
-export const showMarkerDescription = id =>
-  (dispatch) => {
-    // Hide the contextual menu
-    dispatch(hideContextualMenu());
+export const showMarkerDescription = id => ({
+  type: 'SHOW_MARKER_DESCRIPTION',
+  id
+});
 
-    // Show marker description
-    dispatch({
-      type: 'SHOW_MARKER_DESCRIPTION',
-      id
-    });
-  };
+export const addMarker = (position, label) => ({
+  type: 'ADD_MARKER',
+  position,
+  label
+});
 
-export const addMarker = (position, label) =>
-  (dispatch) => {
-    // Hide all markers descriptions
-    dispatch(hideMarkerDescription());
+// const _dispatchShowContextualMenu = (dispatch, data, label) => {
+//   const contextualMenu = _.merge({}, data, { label });
+//   // show contextual menu
+//   dispatch({
+//     type: 'SHOW_CONTEXTUAL_MENU',
+//     contextualMenu
+//   });
+// };
 
-    // Hide the contextual menu
-    dispatch(hideContextualMenu());
-
-    // Add marker
-    dispatch({
-      type: 'ADD_MARKER',
-      position,
-      label
-    });
-  };
-
-const _dispatchShowContextualMenu = (dispatch, data, label) => {
-  const contextualMenu = _.merge({}, data, { label });
-  // show contextual menu
-  dispatch({
-    type: 'SHOW_CONTEXTUAL_MENU',
-    contextualMenu
+export const showContextualMenu = (lat, lng) =>
+  ({
+    type: 'SHOW_CONTEXTUAL_MENU_REQUEST',
+    lat,
+    lng
   });
-};
 
-export const showContextualMenu = data =>
-  (dispatch) => {
-    // Hide all markers descriptions
-    dispatch(hideMarkerDescription());
-
-    fetchGeocode(data.position.lat, data.position.lng)
-      .then((result) => {
-        _dispatchShowContextualMenu(dispatch, data, getLabelFromGeocode(result));
-      })
-      .catch(() => {
-        _dispatchShowContextualMenu(dispatch, data, 'undefined');
-      });
-  };
-
-export const showSearchedLocation = value =>
-  (dispatch) => {
-    geocodeByAddress(value)
-      .then(results => getLatLng(results[0]))
-      .then((latLng) => {
-        const data = {
-          position: latLng
-        };
-        _dispatchShowContextualMenu(dispatch, data, value);
-      })
-      .catch(error => console.error('Error', error));
-  };
+export const showSearchedLocation = value =>( {} ); //TODO
+  // (dispatch) => {
+  //   geocodeByAddress(value)
+  //     .then(results => getLatLng(results[0]))
+  //     .then((latLng) => {
+  //       const data = {
+  //         position: latLng
+  //       };
+  //       _dispatchShowContextualMenu(dispatch, data, value);
+  //     })
+  //     .catch(error => console.error('Error', error));
+  // };
