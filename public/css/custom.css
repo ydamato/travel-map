@@ -5,3 +5,17 @@
 .map-container h3 {
   font-size: initial;
 }
+
+.panel-markerlist {
+  height: 510px;
+  max-height: 510px;
+  overflow: scroll;
+}
+
+.markerlist li {
+  border-width: 0 0 1px 0;
+}
+
+.markerlist .list-group-item {
+  margin-bottom: 0
+}

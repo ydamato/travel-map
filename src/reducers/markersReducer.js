@@ -25,7 +25,7 @@ const createMarker = (position, label) => (
   {
     id: Date.now().toString(),
     title: label,
-    description: '',
+    description: `Description for ${label}...`,
     position
   }
 );
