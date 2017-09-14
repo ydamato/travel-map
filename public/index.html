@@ -1,12 +1,59 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Travel Map</title>
-  </head>
-  <body>
-    <div id="root"></div>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/custom.css">
+  <title>Travel Map</title>
+</head>
+
+<body class="skin-black">
+  <section>
+    <div>
+      <div>
+        <header class="header fixed--header"><a href="#" class="logo">Travel map</a>
+          <nav class="navbar navbar-static-top" role="navigation">
+            <div class="navbar-right">
+              <ul class="nav navbar-nav">
+                <li class="dropdown user user-menu">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-user"></i>
+                    <span> Yann<i class="caret"></i></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </header>
+        <div class="wrapper row-offcanvas row-offcanvas-left">
+          <aside class="right-side--top-margin">
+            <section class="content view-enter">
+              <div class="row" style="margin-bottom: 5px;">
+                <div class="col-md-3">
+                    <div id="react-counter"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-8">
+                  <section class="panel ">
+                    <header class="panel-heading">Map</header>
+                    <div class="panel-body" style="background-color: rgb(255, 255, 255);">
+                        <div id="react-map"></div>
+                    </div>
+                  </section>
+                </div>
+                <div class="col-lg-4">
+                  <div id="react-searchbox" style="margin-bottom: 20px;"></div>  
+                  <div id="react-marker-list"></div>
+                </div>
+              </div>
+              </li>
+              </ul>
+        </div>
+        </section>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -18,5 +65,6 @@
       To create a production bundle, use `npm run build`.
     -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDx6Kl-YlrOp56Tdb0SQt62qnO78PenbFE&libraries=places"></script>
-  </body>
+</body>
+
 </html>

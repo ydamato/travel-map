@@ -8,8 +8,7 @@ const onMapRightClickHandler = event =>
 const mapStateToProps = state => (
   {
     markers: state.markers,
-    contextualMenu: state.contextualMenu,
-    searchBox: state.searchBox
+    contextualMenu: state.contextualMenu
   }
 );
 
@@ -22,8 +21,6 @@ const mapDispatchToProps = dispatch => (
     removeMarker: id => dispatch(actions.removeMarker(id)),
     hideMarkerDescription: () => dispatch(actions.hideMarkerDescription()),
     hideAllInfoWindows: () => dispatch(actions.hideAllInfoWindows()),
-    showSearchedLocationRequest: value => dispatch(actions.showSearchedLocationRequest(value)),
-    updateSearchBoxValue: value => dispatch(actions.updateSearchBoxValue(value)),
     updateMarkerPositionRequest: (id, lat, lng) => dispatch(actions.updateMarkerPositionRequest(id, lat, lng))
   }
 );

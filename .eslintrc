@@ -6,6 +6,7 @@
     "react/jsx-filename-extension":"off",
     "no-underscore-dangle": "off",
     "valid-jsdoc": "error",
-    "react/jsx-boolean-value": "off"
+    "react/jsx-boolean-value": "off",
+    "no-script-url": "off"
   }
 }

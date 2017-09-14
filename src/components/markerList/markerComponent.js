@@ -9,42 +9,31 @@ const MarkerComponent = (
     hideMarkerDescription
   }
 ) => {
-  const collapse = () => {
-    hideMarkerDescription(marker.id);
-  };
-
-  const expand = () => {
-    showMarkerDescription(marker.id);
-  };
-
   const remove = () => {
     removeMarker(marker.id);
   };
 
+  const expandOrCollapse = () => {
+    if (marker.isActive) {
+      hideMarkerDescription(marker.id);
+    } else {
+      showMarkerDescription(marker.id);
+    }
+  };
+
+  const getTitleIcon = () => `glyphicon glyphicon-menu-${marker.isActive ? 'up' : 'down'}`;
+
   return (
-    <div
-      style={{
-        borderBottom: '1px solid black',
-        padding: '10px',
-        backgroundColor: marker.isActive ? '#FFF' : 'transparent'
-      }}
-    >
-      <div className="markerTitle">
-        {marker.title}
-        {
-          marker.isActive ?
-            <button onClick={collapse}>Collapse</button> :
-            <button onClick={expand}>Expand</button>
-        }
+    <li className="list-group-item">
+      <button onClick={remove} className="pull-right label label-danger inline">X</button>
+      <a href="javascript:void(0)" onClick={expandOrCollapse}>
+        {marker.title} <span className={getTitleIcon()} />
+      </a>
+      <div>
+        {marker.isActive && marker.description}
       </div>
-      {
-        marker.isActive &&
-        <div className="markerDescription">
-          {marker.description}
-          <button onClick={remove}> X </button>
-        </div>
-      }
-    </div>
+    </li>
+
   );
 };
 

@@ -18,10 +18,17 @@ const searchBoxComponent = (
     onChange: updateSearchBoxValue,
   };
 
+  const styles = {
+    autocompleteContainer: {
+      zIndex: 2000
+    },
+  };
+
   return (
     <form>
       <PlacesAutocomplete
         inputProps={inputProps}
+        styles= {styles}
         onSelect={handleSelection}
         googleLogo={false}
       />

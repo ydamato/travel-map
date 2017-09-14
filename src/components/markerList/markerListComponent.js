@@ -3,21 +3,26 @@ import PropTypes from 'prop-types';
 import Marker from './markerComponent';
 
 const MarkerListComponent = props => (
-  <div className="marker-list" style={{ marginTop: '100px' }}>
-    {
-      props.markers.map(
-        marker => (
-          <Marker
-            key={marker.id}
-            marker={marker}
-            showMarkerDescription={props.showMarkerDescription}
-            removeMarker={props.removeMarker}
-            hideMarkerDescription={props.hideMarkerDescription}
-          />
-        )
-      )
-    }
-  </div>
+  <section className="panel panel-markerlist">
+    <header className="panel-heading">Marker List</header>
+    <div className="panel-body" style={{ backgroundColor: 'rgb(255, 255, 255)' }}>
+      <ul className="list-group markerlist">
+        {
+          props.markers.map(
+            marker => (
+              <Marker
+                key={marker.id}
+                marker={marker}
+                showMarkerDescription={props.showMarkerDescription}
+                removeMarker={props.removeMarker}
+                hideMarkerDescription={props.hideMarkerDescription}
+              />
+            )
+          )
+        }
+      </ul>
+    </div>
+  </section>
 );
 
 MarkerListComponent.propTypes = {
