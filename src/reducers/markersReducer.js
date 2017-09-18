@@ -63,18 +63,24 @@ const markers = (state = defaultMarkerMap, action) => {
             position: {
               lat: action.lat,
               lng: action.lng
-            }
+            },
+            previousState: updatedState[index]
           };
         }
       });
       break;
 
-    case 'UPDATE_MARKER_TITLE':
+    case 'UPDATE_MARKER_POSITION':
       updatedState.forEach((marker, index) => {
         if (marker.id === action.id) {
           updatedState[index] = {
             ...marker,
-            title: action.title
+            title: action.title,
+            position: {
+              lat: action.lat,
+              lng: action.lng
+            },
+            previousState: null
           };
         }
       });

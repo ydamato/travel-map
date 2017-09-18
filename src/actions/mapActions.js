@@ -61,9 +61,11 @@ export const updateMarkerPositionRequest = (id, lat, lng) =>
     lng
   });
 
-export const updateMarkerTitle = (id, title) =>
+export const updateMarkerPosition = (id, title, lat, lng) =>
   ({
-    type: 'UPDATE_MARKER_TITLE',
+    type: 'UPDATE_MARKER_POSITION',
     id,
-    title
+    title,
+    lat,
+    lng
   });
