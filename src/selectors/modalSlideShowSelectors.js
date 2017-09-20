@@ -1,0 +1,1 @@
+export const getModalSlideShow = state => state.modalSlideShow;

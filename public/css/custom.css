@@ -61,3 +61,24 @@
   height: 200px;
   margin: auto;
 }
+
+.slick-next:before,
+.slick-prev:before {
+  color: #f05050;
+}
+
+.modal-slideshow {
+  width: 90%;
+}
+
+.modal-slideshow .slick-slider {
+  margin: 20px;
+}
+
+.modal-slideshow .slick-slide {
+  text-align: center;
+}
+
+.modal-slideshow img {
+  margin: auto;
+}

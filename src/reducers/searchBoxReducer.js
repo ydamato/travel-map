@@ -1,10 +1,7 @@
 import _ from 'lodash';
+import defaultSearchBox from '../data/searchBoxData';
 
-const defaultsearchBox = {
-  value: ''
-};
-
-const searchBox = (state = defaultsearchBox, action) => {
+const searchBox = (state = defaultSearchBox, action) => {
   const updatedState = _.merge({}, state);
 
   switch (action.type) {

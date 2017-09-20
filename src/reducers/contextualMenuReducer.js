@@ -1,13 +1,5 @@
 import _ from 'lodash';
-
-const defaultContextualMenu = {
-  isActive: false,
-  position: {
-    lat: 0,
-    lng: 0
-  },
-  label: null
-};
+import defaultContextualMenu from '../data/contextualMenuData';
 
 const contextualMenu = (state = defaultContextualMenu, action) => {
   let updatedState = _.merge({}, state);
