@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal } from 'react-bootstrap';
 import Slider from 'react-slick';
+import ImageLoader from 'react-imageloader';
 
 const MarkerDetailsComponent = (
   {
@@ -27,6 +28,7 @@ const MarkerDetailsComponent = (
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
+    lazyLoad: true,
     className: 'slider-pictures'
   };
 
@@ -37,6 +39,7 @@ const MarkerDetailsComponent = (
     slidesToShow: 1,
     slidesToScroll: 1,
     className: 'slider-slideshow',
+    lazyLoad: true,
     initialSlide: modalSlideShow.initialPosition
   };
 
@@ -57,7 +60,13 @@ const MarkerDetailsComponent = (
                 (
                   <div key={index}>
                     <a href="javascript:void(0)" onClick={_showModalSlideShow} data-position={index}>
-                      <img alt={picture.title} src={picture.url} />
+                      <ImageLoader
+                        src={picture.url}
+                        wrapper={React.DOM.div}
+                        preloader={() => (<img src="https://preloaders.net/img/favicons/favicon-194x194.png" alt="loading" />)}
+                      >
+                        Image load failed!
+                      </ImageLoader>
                     </a>
                   </div>
                 )
@@ -82,7 +91,13 @@ const MarkerDetailsComponent = (
                   (
                     <div key={index}>
                       <a href="javascript:void(0)" onClick={_showModalSlideShow} data-position={index}>
-                        <img alt={picture.title} src={picture.url} />
+                        <ImageLoader
+                          src={picture.url}
+                          wrapper={React.DOM.div}
+                          preloader={() => (<img src="https://preloaders.net/img/favicons/favicon-194x194.png" alt="loading" />)}
+                        >
+                          Image load failed!
+                        </ImageLoader>
                       </a>
                       <div>{picture.title}</div>
                       <div>{picture.description}</div>
