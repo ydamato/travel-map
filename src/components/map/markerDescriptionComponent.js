@@ -24,7 +24,9 @@ const MarkerDescription = (
 };
 
 MarkerDescription.propTypes = {
-  marker: PropTypes.shape().isRequired,
+  marker: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+  }).isRequired,
   removeMarker: PropTypes.func.isRequired,
   hideMarkerDescription: PropTypes.func.isRequired
 

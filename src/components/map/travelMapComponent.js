@@ -51,18 +51,10 @@ TravelMap.propTypes = {
   markers: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      position: PropTypes.shape({
-        lat: PropTypes.number.isRequired,
-        lng: PropTypes.number.isRequired
-      }).isRequired
+      position: PropTypes.shape().isRequired
     }).isRequired
   ).isRequired,
-  contextualMenu: PropTypes.shape({
-    position: PropTypes.shape({
-      lat: PropTypes.number.isRequired,
-      lng: PropTypes.number.isRequired
-    }).isRequired
-  }).isRequired,
+  contextualMenu: PropTypes.shape().isRequired,
   showContextualMenuRequest: PropTypes.func.isRequired,
   hideContextualMenu: PropTypes.func.isRequired,
   addMarker: PropTypes.func.isRequired,

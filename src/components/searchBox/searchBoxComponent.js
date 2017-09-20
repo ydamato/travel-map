@@ -28,7 +28,7 @@ const searchBoxComponent = (
     <form>
       <PlacesAutocomplete
         inputProps={inputProps}
-        styles= {styles}
+        styles={styles}
         onSelect={handleSelection}
         googleLogo={false}
       />
@@ -37,7 +37,9 @@ const searchBoxComponent = (
 };
 
 searchBoxComponent.propTypes = {
-  searchBox: PropTypes.shape().isRequired,
+  searchBox: PropTypes.shape({
+    value: PropTypes.string.isRequired,
+  }).isRequired,
   showSearchedLocationRequest: PropTypes.func.isRequired,
   updateSearchBoxValue: PropTypes.func.isRequired
 };

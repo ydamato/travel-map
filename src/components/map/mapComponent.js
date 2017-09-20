@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import TravelMap from './travelMapComponent';
 
 const MapComponent = props => (
@@ -10,30 +9,5 @@ const MapComponent = props => (
     {...props}
   />
 );
-
-MapComponent.propTypes = {
-  markers: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      position: PropTypes.shape({
-        lat: PropTypes.number.isRequired,
-        lng: PropTypes.number.isRequired
-      }).isRequired
-    }).isRequired
-  ).isRequired,
-  contextualMenu: PropTypes.shape({
-    position: PropTypes.shape({
-      lat: PropTypes.number.isRequired,
-      lng: PropTypes.number.isRequired
-    }).isRequired
-  }).isRequired,
-  showContextualMenuRequest: PropTypes.func.isRequired,
-  hideContextualMenu: PropTypes.func.isRequired,
-  addMarker: PropTypes.func.isRequired,
-  showMarkerDescription: PropTypes.func.isRequired,
-  removeMarker: PropTypes.func.isRequired,
-  hideMarkerDescription: PropTypes.func.isRequired
-};
-
 
 export default MapComponent;

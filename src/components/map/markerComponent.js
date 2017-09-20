@@ -41,7 +41,9 @@ const MarkerComponent = (
 };
 
 MarkerComponent.propTypes = {
-  marker: PropTypes.shape().isRequired,
+  marker: PropTypes.shape({
+    id: PropTypes.string.isRequired
+  }).isRequired,
   showMarkerDescription: PropTypes.func.isRequired,
   removeMarker: PropTypes.func.isRequired,
   hideMarkerDescription: PropTypes.func.isRequired,

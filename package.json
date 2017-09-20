@@ -10,6 +10,7 @@
     "react-scripts": "^1.0.2"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "es6-promise": "^4.1.1",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
@@ -20,6 +21,7 @@
     "react-google-maps": "^7.2.0",
     "react-places-autocomplete": "^5.4.3",
     "react-redux": "^5.0.5",
+    "react-slick": "^0.15.4",
     "redux": "^3.5.2",
     "redux-observable": "^0.16.0",
     "rxjs": "^5.4.3"

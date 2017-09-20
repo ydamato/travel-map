@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import * as actions from '../actions/mapActions';
+import { showMarkerDescription } from '../actions/mapActions';
 import MarkerListComponent from '../components/markerList/markerListComponent';
 
 const mapStateToProps = state => (
@@ -10,9 +10,7 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => (
   {
-    showMarkerDescription: id => dispatch(actions.showMarkerDescription(id)),
-    removeMarker: id => dispatch(actions.removeMarker(id)),
-    hideMarkerDescription: () => dispatch(actions.hideMarkerDescription()),
+    showMarkerDescription: id => dispatch(showMarkerDescription(id))
   }
 );
 

@@ -12,10 +12,52 @@
   overflow: scroll;
 }
 
+.panel-markerlist .list-group-item .panel {
+  margin-bottom: 0;
+  box-shadow: none;
+}
+
+.panel-markerlist .list-group-item .panel-body {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .markerlist li {
   border-width: 0 0 1px 0;
 }
 
 .markerlist .list-group-item {
-  margin-bottom: 0
+  margin-bottom: 0;
+  padding: 0;
+}
+
+.markerlist .list-group-item.is-active a i {
+  color: #f05050;
+  position: absolute;
+  font-size: 20px;
+}
+
+.markerlist .list-group-item a {
+  display: block;
+  padding: 5px 15px;
+  margin: 5px;
+}
+
+.btn-delete-marker {
+  border-radius: 5px;
+  border: 0;
+  padding: 5px;
+  background-color: #f05050;
+  color: white;
+}
+
+.slider-pictures {
+  margin: 20px;
+  background-color: grey;
+  height: 200px;
+}
+
+.slider-pictures .slick-slide img{
+  height: 200px;
+  margin: auto;
 }

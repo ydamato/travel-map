@@ -26,10 +26,7 @@ const ContextualMenu = (
 
 ContextualMenu.propTypes = {
   contextualMenu: PropTypes.shape({
-    position: PropTypes.shape({
-      lat: PropTypes.number.isRequired,
-      lng: PropTypes.number.isRequired
-    }).isRequired,
+    position: PropTypes.shape.isRequired,
     label: PropTypes.string,
   }).isRequired,
   hideContextualMenu: PropTypes.func.isRequired,

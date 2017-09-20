@@ -14,15 +14,7 @@ const Counter = ({ markers }) =>
   );
 
 Counter.propTypes = {
-  markers: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      position: PropTypes.shape({
-        lat: PropTypes.number.isRequired,
-        lng: PropTypes.number.isRequired
-      }).isRequired
-    }).isRequired
-  ).isRequired,
+  markers: PropTypes.array.isRequired,
 };
 
 export default Counter;

@@ -9,6 +9,7 @@ import CounterWidget from './components/counterWidget';
 import MapWidget from './components/mapWidget';
 import MarkerListWidget from './components/markerListWidget';
 import SearchboxWidget from './components/searchboxWidget';
+import MarkerDetailsWidget from './components/markerDetailsWidget';
 import reducer from './reducers';
 import epic from './epics';
 
@@ -56,4 +57,11 @@ render(
     <SearchboxWidget />
   </Provider>,
   document.getElementById('react-searchbox')
+);
+
+render(
+  <Provider store={store}>
+    <MarkerDetailsWidget />
+  </Provider>,
+  document.getElementById('react-marker-details')
 );

@@ -1,47 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
-const MarkerComponent = (
-  {
-    marker,
-    showMarkerDescription,
-    removeMarker,
-    hideMarkerDescription
-  }
-) => {
-  const remove = () => {
-    removeMarker(marker.id);
-  };
+const MarkerListComponent = ({
+  marker,
+  showMarkerDescription
+}) => {
+  const _showMarkerDescription = () => showMarkerDescription(marker.id);
 
-  const expandOrCollapse = () => {
-    if (marker.isActive) {
-      hideMarkerDescription(marker.id);
-    } else {
-      showMarkerDescription(marker.id);
-    }
-  };
-
-  const getTitleIcon = () => `glyphicon glyphicon-menu-${marker.isActive ? 'up' : 'down'}`;
-
+  const markerClass = classNames({
+    'list-group-item': true,
+    'is-active': marker.isActive
+  });
   return (
-    <li className="list-group-item">
-      <button onClick={remove} className="pull-right label label-danger inline">X</button>
-      <a href="javascript:void(0)" onClick={expandOrCollapse}>
-        {marker.title} <span className={getTitleIcon()} />
+    <li className={markerClass}>
+      <a href="javascript:void(0);" onClick={_showMarkerDescription}>
+        {marker.title}
+        {
+          marker.isActive && <i className="material-icons">place</i>
+        }
       </a>
-      <div>
-        {marker.isActive && marker.description}
-      </div>
-    </li>
 
+    </li>
   );
 };
 
-MarkerComponent.propTypes = {
-  marker: PropTypes.shape().isRequired,
-  showMarkerDescription: PropTypes.func.isRequired,
-  removeMarker: PropTypes.func.isRequired,
-  hideMarkerDescription: PropTypes.func.isRequired
+MarkerListComponent.propTypes = {
+  marker: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    isActive: PropTypes.bool.isRequired
+  }).isRequired,
+  showMarkerDescription: PropTypes.func.isRequired
 };
 
-export default MarkerComponent;
+
+export default MarkerListComponent;
