@@ -23,7 +23,12 @@ export default [
         title: 'picture 3',
         description: 'description 3',
         url: 'http://galet-plage.fr/wp-content/uploads/2017/05/Le-galet-plage-restaurant-bord-de-mer-nice-3.jpg'
-      }
+      },
+      {
+        title: 'picture 4',
+        description: 'description 4',
+        url: 'https://cdn.nice.org.uk/V3/Content/nice/favicon.ico'
+      },
     ]
   },
   {

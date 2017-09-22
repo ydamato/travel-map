@@ -15,10 +15,10 @@ const MarkerListComponent = ({
   return (
     <li className={markerClass}>
       <a href="javascript:void(0);" onClick={_showMarkerDescription}>
-        {marker.title}
         {
           marker.isActive && <i className="material-icons">place</i>
         }
+        {marker.title}
       </a>
 
     </li>
