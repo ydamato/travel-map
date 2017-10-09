@@ -3,33 +3,36 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
-import { createEpicMiddleware } from 'redux-observable';
 import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga';
 import CounterWidget from './components/counterWidget';
 import MapWidget from './components/mapWidget';
 import MarkerListWidget from './components/markerListWidget';
 import SearchboxWidget from './components/searchboxWidget';
 import MarkerDetailsWidget from './components/markerDetailsWidget';
 import reducer from './reducers';
-import epic from './epics';
+import sagas from './sagas';
+
+const sagaMiddleware = createSagaMiddleware();
 
 let store;
-const epicMiddleware = createEpicMiddleware(epic);
 
 if (process.env.NODE_ENV === 'production') {
   store = createStore(
     reducer,
-    applyMiddleware(epicMiddleware)
+    applyMiddleware(sagaMiddleware)
   );
 } else {
   store = createStore(
     reducer,
     compose(
-      applyMiddleware(epicMiddleware),
+      applyMiddleware(sagaMiddleware),
       window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )
   );
 }
+
+sagaMiddleware.run(sagas);
 
 render(
   <Provider store={store}>

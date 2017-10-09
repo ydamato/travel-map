@@ -32,3 +32,7 @@ export const getLabelFromGeocode = (data) => {
   }
   return `${city}, ${country}`;
 };
+
+export const getGeocode = (lat, lng) =>
+  fetch(`http://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}`)
+    .then(response => response.json());
