@@ -1,14 +1,17 @@
 import { connect } from 'react-redux';
 import * as actions from '../actions/mapActions';
 import MapComponent from '../components/map/mapComponent';
+import { getMarkers } from '../selectors/mapSelectors';
+import { getContextualMenu } from '../selectors/contextualMenuSelectors';
+
 
 const onMapRightClickHandler = event =>
   actions.showContextualMenuRequest(event.latLng.lat(), event.latLng.lng());
 
 const mapStateToProps = state => (
   {
-    markers: state.markers,
-    contextualMenu: state.contextualMenu
+    markers: getMarkers(state),
+    contextualMenu: getContextualMenu(state)
   }
 );
 

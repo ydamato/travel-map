@@ -1,0 +1,1 @@
+export const getSearchBox = state => state.searchBox;

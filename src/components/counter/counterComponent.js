@@ -14,7 +14,9 @@ const Counter = ({ markers }) =>
   );
 
 Counter.propTypes = {
-  markers: PropTypes.array.isRequired,
+  markers: PropTypes.arrayOf(
+    PropTypes.shape({}).isRequired
+  ).isRequired
 };
 
 export default Counter;

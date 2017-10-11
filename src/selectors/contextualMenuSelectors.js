@@ -1,0 +1,1 @@
+export const getContextualMenu = state => state.contextualMenu;

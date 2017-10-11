@@ -18,7 +18,14 @@ function* updateMarkerPositionRequest({ id, lat, lng }) {
     yield put(updateMarkerPosition(id, label, lat, lng));
   } else {
     previousState = yield select(getPreviousMarkerState.bind(null, id));
-    yield put(updateMarkerPosition(id, previousState.title, previousState.position.lat, previousState.position.lng));
+    yield put(
+      updateMarkerPosition(
+        id,
+        previousState.title,
+        previousState.position.lat,
+        previousState.position.lng
+      )
+    );
   }
 }
 

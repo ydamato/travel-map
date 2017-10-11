@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import * as actions from '../actions/mapActions';
 import SearchBoxComponent from '../components/searchBox/searchBoxComponent';
+import { getSearchBox } from '../selectors/searchBoxSelectors';
 
 const mapStateToProps = state => (
   {
-    searchBox: state.searchBox
+    searchBox: getSearchBox(state)
   }
 );
 
